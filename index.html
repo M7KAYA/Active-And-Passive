@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Active And Passive</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #3498db 0%, #6dd5fa 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        width: 420px;
+        background: #ffffff;
+        padding: 30px 25px;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      #question-text {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #333;
+        padding: 14px 20px;
+        background-color: #e3f2fd;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+        display: inline-block;
+        max-width: 100%;
+        line-height: 1.4;
+        user-select: none;
+      }
+      .btn-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+      }
+      button {
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: #3498db;
+        color: white;
+        transition: background-color 0.3s ease, transform 0.1s ease;
+      }
+      button:hover {
+        background-color: #2980b9;
+        transform: scale(1.02);
+      }
+      button:disabled {
+        background-color: #bdc3c7;
+        cursor: not-allowed;
+      }
+      .correct {
+        background-color: #2ecc71 !important;
+      }
+      .wrong {
+        background-color: #e74c3c !important;
+      }
+      .answer-btn:last-of-type {
+        margin-bottom: 10px;
+      }
+      #question-number {
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #666;
+        font-weight: 500;
+      }
+      #result-box {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #2c3e50;
+        padding: 12px;
+        background-color: #dfefff;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 id="quiz-title">Active And Passive</h2>
+
+      <div id="start-box">
+        <button id="start-btn">Start</button>
+      </div>
+      <div id="quiz-box" class="hide">
+        <div id="question-number"></div>
+        <div id="question-text"></div>
+        <div id="answer-buttons" class="btn-grid"></div>
+        <button id="next-btn" disabled>Next</button>
+      </div>
+      <div id="result-box" class="hide">
+        <h3>Your Score</h3>
+        <p id="score-text"></p>
+        <button id="try-again-btn">Try Again</button>
+      </div>
+    </div>
+
+    <script>
+      const allQuestions = [
+        {
+          question: "The letter ___ by the postman every morning.",
+          options: ["delivers", "is delivered", "delivered", "was delivering"],
+          correctIndex: 1,
+        },
+        {
+          question: "They ___ the house last year.",
+          options: ["build", "built", "are built", "were building"],
+          correctIndex: 1,
+        },
+        {
+          question: "The song ___ beautifully by her.",
+          options: ["sang", "is sang", "is sung", "was singing"],
+          correctIndex: 2,
+        },
+        {
+          question: "The window ___ by the boy yesterday.",
+          options: ["broke", "is broken", "was broken", "breaks"],
+          correctIndex: 2,
+        },
+        {
+          question: "A new bridge ___ over the river.",
+          options: ["builds", "built", "is built", "is being built"],
+          correctIndex: 3,
+        },
+        {
+          question: "The cakes ___ by my mother.",
+          options: ["are baked", "bakes", "are baking", "baked"],
+          correctIndex: 0,
+        },
+        {
+          question: "He ___ a story to the children.",
+          options: ["tells", "told", "is told", "was telling"],
+          correctIndex: 1,
+        },
+        {
+          question: "The homework ___ by the students now.",
+          options: ["is doing", "are done", "is being done", "done"],
+          correctIndex: 2,
+        },
+        {
+          question: "The thief ___ by the police last night.",
+          options: ["catches", "was caught", "is caught", "caught"],
+          correctIndex: 1,
+        },
+        {
+          question: "A new law ___ by the government.",
+          options: ["passed", "is passed", "has passed", "has been passed"],
+          correctIndex: 3,
+        },
+        {
+          question: "She ___ the piano every day.",
+          options: ["plays", "is played", "play", "playing"],
+          correctIndex: 0,
+        },
+        {
+          question: "The book ___ by the author yesterday.",
+          options: ["was written", "is written", "writes", "writing"],
+          correctIndex: 0,
+        },
+        {
+          question: "The walls ___ white.",
+          options: ["are painted", "painted", "are painting", "paint"],
+          correctIndex: 0,
+        },
+        {
+          question: "The food ___ by the guests.",
+          options: ["is eating", "ate", "eaten", "was eaten"],
+          correctIndex: 3,
+        },
+        {
+          question: "We ___ the documents tomorrow.",
+          options: ["send", "will send", "are sent", "will be sent"],
+          correctIndex: 3,
+        },
+        {
+          question: "The dog ___ the bone.",
+          options: ["was given", "gave", "is giving", "gives"],
+          correctIndex: 0,
+        },
+        {
+          question: "The movie ___ by a famous director.",
+          options: ["directs", "is directing", "is directed", "directed"],
+          correctIndex: 2,
+        },
+        {
+          question: "They ___ the old building next week.",
+          options: [
+            "demolish",
+            "demolished",
+            "will be demolished",
+            "will demolish",
+          ],
+          correctIndex: 3,
+        },
+        {
+          question: "The cake ___ delicious.",
+          options: ["is tasting", "is tasted", "tastes", "was tasting"],
+          correctIndex: 2,
+        },
+        {
+          question: "He ___ the car yesterday.",
+          options: ["is washing", "was washed", "washed", "is washed"],
+          correctIndex: 2,
+        },
+        {
+          question: "The car ___ by the mechanic.",
+          options: ["fixes", "fixed", "is fixed", "is being fixing"],
+          correctIndex: 2,
+        },
+        {
+          question: "They ___ the roof now.",
+          options: [
+            "are repaired",
+            "are repairing",
+            "repair",
+            "are being repaired",
+          ],
+          correctIndex: 3,
+        },
+        {
+          question: "The documents ___ to the manager.",
+          options: ["are sent", "send", "are being sent", "sends"],
+          correctIndex: 2,
+        },
+        {
+          question: "The letter ___ by her.",
+          options: ["writes", "written", "is written", "writing"],
+          correctIndex: 2,
+        },
+        {
+          question: "A new shop ___ in town.",
+          options: ["opens", "is opened", "is being opened", "opened"],
+          correctIndex: 2,
+        },
+        {
+          question: "The poem ___ by the child.",
+          options: ["recites", "is recited", "is reciting", "recited"],
+          correctIndex: 1,
+        },
+        {
+          question: "The dishes ___ after dinner.",
+          options: ["wash", "washed", "are washed", "are washing"],
+          correctIndex: 2,
+        },
+        {
+          question: "The floor ___ every day.",
+          options: ["is cleaned", "clean", "cleans", "cleaned"],
+          correctIndex: 0,
+        },
+        {
+          question: "The bill ___ by the customer.",
+          options: ["pays", "is paying", "paid", "is paid"],
+          correctIndex: 3,
+        },
+        {
+          question: "The thief ___ in the alley.",
+          options: ["caught", "is caught", "was caught", "catches"],
+          correctIndex: 2,
+        },
+        {
+          question: "He ___ the match yesterday.",
+          options: ["wins", "is won", "won", "was won"],
+          correctIndex: 2,
+        },
+        {
+          question: "The classroom ___ by the students.",
+          options: ["decorates", "was decorated", "decorated", "is decorating"],
+          correctIndex: 1,
+        },
+        {
+          question: "The questions ___ easily.",
+          options: ["answered", "are answered", "are answering", "answer"],
+          correctIndex: 1,
+        },
+        {
+          question: "The toys ___ by the children.",
+          options: ["are playing", "played", "are played", "were playing"],
+          correctIndex: 2,
+        },
+        {
+          question: "The mail ___ every morning.",
+          options: ["delivers", "is delivered", "deliver", "delivered"],
+          correctIndex: 1,
+        },
+        {
+          question: "He ___ the trophy last year.",
+          options: ["is awarded", "was awarded", "awarded", "has awarded"],
+          correctIndex: 1,
+        },
+        {
+          question: "A picture ___ on the wall.",
+          options: ["hangs", "is hanged", "is hung", "hung"],
+          correctIndex: 2,
+        },
+        {
+          question: "A loud noise ___ outside.",
+          options: ["is hearing", "heard", "hears", "is heard"],
+          correctIndex: 3,
+        },
+        {
+          question: "The milk ___ by the cat.",
+          options: ["drank", "is drank", "is drunk", "is drinking"],
+          correctIndex: 2,
+        },
+        {
+          question: "My homework ___ by my brother.",
+          options: ["was done", "is doing", "did", "doing"],
+          correctIndex: 0,
+        },
+        {
+          question: "They ___ the movie last night.",
+          options: ["watched", "are watched", "are watching", "were watched"],
+          correctIndex: 0,
+        },
+        {
+          question: "The room ___ now.",
+          options: ["is being cleaned", "is cleaned", "cleaned", "cleans"],
+          correctIndex: 0,
+        },
+        {
+          question: "She ___ a gift by her friend.",
+          options: ["gives", "is given", "given", "was given"],
+          correctIndex: 3,
+        },
+        {
+          question: "The students ___ the test carefully.",
+          options: ["writes", "wrote", "were written", "write"],
+          correctIndex: 1,
+        },
+        {
+          question: "A letter ___ to him every week.",
+          options: ["writes", "written", "is written", "is writing"],
+          correctIndex: 2,
+        },
+        {
+          question: "The thief ___ by the police.",
+          options: ["caught", "was catching", "was caught", "is catching"],
+          correctIndex: 2,
+        },
+        {
+          question: "The guests ___ warmly.",
+          options: ["are welcomed", "welcomed", "welcome", "are welcoming"],
+          correctIndex: 0,
+        },
+        {
+          question: "A cake ___ for her birthday.",
+          options: ["is baking", "baked", "is baked", "was baked"],
+          correctIndex: 3,
+        },
+        {
+          question: "The homework ___ by me.",
+          options: ["is being done", "is doing", "does", "do"],
+          correctIndex: 0,
+        },
+        {
+          question: "The TV ___ by the children.",
+          options: ["is watching", "is watched", "watches", "watched"],
+          correctIndex: 1,
+        },
+      ];
+
+      let currentQuestionIndex = 0;
+      let score = 0;
+
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+      shuffleArray(allQuestions);
+
+      const startBtn = document.getElementById("start-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const tryAgainBtn = document.getElementById("try-again-btn");
+      const quizBox = document.getElementById("quiz-box");
+      const startBox = document.getElementById("start-box");
+      const questionNumberElement = document.getElementById("question-number");
+      const questionText = document.getElementById("question-text");
+      const answerButtons = document.getElementById("answer-buttons");
+      const resultBox = document.getElementById("result-box");
+      const scoreText = document.getElementById("score-text");
+
+      startBtn.addEventListener("click", startQuiz);
+      nextBtn.addEventListener("click", () => {
+        currentQuestionIndex++;
+        setNextQuestion();
+      });
+      tryAgainBtn.addEventListener("click", startQuiz);
+
+      function startQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        startBox.classList.add("hide");
+        resultBox.classList.add("hide");
+        quizBox.classList.remove("hide");
+        setNextQuestion();
+      }
+
+      function setNextQuestion() {
+        resetState();
+        if (currentQuestionIndex < allQuestions.length) {
+          showQuestion(allQuestions[currentQuestionIndex]);
+        } else {
+          showResult();
+        }
+      }
+
+      function showQuestion(questionObj) {
+        questionNumberElement.textContent = `Question ${
+          currentQuestionIndex + 1
+        } of ${allQuestions.length}`;
+        questionText.textContent = questionObj.question;
+
+        questionObj.options.forEach((option, index) => {
+          const button = document.createElement("button");
+          button.textContent = option;
+          button.classList.add("answer-btn");
+          button.addEventListener("click", () =>
+            selectAnswer(button, index === questionObj.correctIndex)
+          );
+          answerButtons.appendChild(button);
+        });
+      }
+
+      function resetState() {
+        nextBtn.disabled = true;
+        answerButtons.innerHTML = "";
+      }
+
+      function selectAnswer(button, isCorrect) {
+        const buttons = answerButtons.querySelectorAll("button");
+        buttons.forEach((btn) => {
+          btn.disabled = true;
+        });
+
+        if (isCorrect) {
+          button.classList.add("correct");
+          score++;
+        } else {
+          button.classList.add("wrong");
+          const correctButton =
+            buttons[allQuestions[currentQuestionIndex].correctIndex];
+          correctButton.classList.add("correct");
+        }
+
+        nextBtn.disabled = false;
+      }
+
+      function showResult() {
+        quizBox.classList.add("hide");
+        resultBox.classList.remove("hide");
+        scoreText.textContent = `${score} out of ${allQuestions.length} correct`;
+      }
+    </script>
+  </body>
+</html>
