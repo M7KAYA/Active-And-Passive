@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Active And Passive</title>
+    <title>Passive Voice</title>
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -92,7 +92,7 @@
   </head>
   <body>
     <div class="container">
-      <h2 id="quiz-title">Active And Passive</h2>
+      <h2 id="quiz-title">Passive Voice</h2>
 
       <div id="start-box">
         <button id="start-btn">Start</button>
@@ -113,263 +113,264 @@
     <script>
       const allQuestions = [
         {
-          question: "The letter ___ by the postman every morning.",
-          options: ["delivers", "is delivered", "delivered", "was delivering"],
-          correctIndex: 1,
-        },
-        {
-          question: "They ___ the house last year.",
-          options: ["build", "built", "are built", "were building"],
-          correctIndex: 1,
-        },
-        {
-          question: "The song ___ beautifully by her.",
-          options: ["sang", "is sang", "is sung", "was singing"],
-          correctIndex: 2,
-        },
-        {
-          question: "The window ___ by the boy yesterday.",
-          options: ["broke", "is broken", "was broken", "breaks"],
-          correctIndex: 2,
-        },
-        {
-          question: "A new bridge ___ over the river.",
-          options: ["builds", "built", "is built", "is being built"],
-          correctIndex: 3,
-        },
-        {
-          question: "The cakes ___ by my mother.",
-          options: ["are baked", "bakes", "are baking", "baked"],
-          correctIndex: 0,
-        },
-        {
-          question: "He ___ a story to the children.",
-          options: ["tells", "told", "is told", "was telling"],
-          correctIndex: 1,
-        },
-        {
-          question: "The homework ___ by the students now.",
-          options: ["is doing", "are done", "is being done", "done"],
-          correctIndex: 2,
-        },
-        {
-          question: "The thief ___ by the police last night.",
-          options: ["catches", "was caught", "is caught", "caught"],
-          correctIndex: 1,
-        },
-        {
-          question: "A new law ___ by the government.",
-          options: ["passed", "is passed", "has passed", "has been passed"],
-          correctIndex: 3,
-        },
-        {
-          question: "She ___ the piano every day.",
-          options: ["plays", "is played", "play", "playing"],
-          correctIndex: 0,
-        },
-        {
-          question: "The book ___ by the author yesterday.",
-          options: ["was written", "is written", "writes", "writing"],
-          correctIndex: 0,
-        },
-        {
-          question: "The walls ___ white.",
-          options: ["are painted", "painted", "are painting", "paint"],
-          correctIndex: 0,
-        },
-        {
-          question: "The food ___ by the guests.",
-          options: ["is eating", "ate", "eaten", "was eaten"],
-          correctIndex: 3,
-        },
-        {
-          question: "We ___ the documents tomorrow.",
-          options: ["send", "will send", "are sent", "will be sent"],
-          correctIndex: 3,
-        },
-        {
-          question: "The dog ___ the bone.",
-          options: ["was given", "gave", "is giving", "gives"],
-          correctIndex: 0,
-        },
-        {
-          question: "The movie ___ by a famous director.",
-          options: ["directs", "is directing", "is directed", "directed"],
-          correctIndex: 2,
-        },
-        {
-          question: "They ___ the old building next week.",
+          question: "When is passive voice typically used?",
           options: [
-            "demolish",
-            "demolished",
-            "will be demolished",
-            "will demolish",
+            "To emphasize the subject performing the action",
+            "To focus on the action itself, not the doer",
+            "To make sentences shorter",
+            "To replace all active sentences",
           ],
-          correctIndex: 3,
+          correctIndex: 1,
         },
         {
-          question: "The cake ___ delicious.",
-          options: ["is tasting", "is tasted", "tastes", "was tasting"],
-          correctIndex: 2,
-        },
-        {
-          question: "He ___ the car yesterday.",
-          options: ["is washing", "was washed", "washed", "is washed"],
-          correctIndex: 2,
-        },
-        {
-          question: "The car ___ by the mechanic.",
-          options: ["fixes", "fixed", "is fixed", "is being fixing"],
-          correctIndex: 2,
-        },
-        {
-          question: "They ___ the roof now.",
+          question: "Which sentence is in passive voice?",
           options: [
-            "are repaired",
-            "are repairing",
-            "repair",
-            "are being repaired",
+            "The chef cooked the meal.",
+            "The meal was cooked by the chef.",
+            "The meal is delicious.",
+            "The chef will cook the meal.",
           ],
-          correctIndex: 3,
-        },
-        {
-          question: "The documents ___ to the manager.",
-          options: ["are sent", "send", "are being sent", "sends"],
-          correctIndex: 2,
-        },
-        {
-          question: "The letter ___ by her.",
-          options: ["writes", "written", "is written", "writing"],
-          correctIndex: 2,
-        },
-        {
-          question: "A new shop ___ in town.",
-          options: ["opens", "is opened", "is being opened", "opened"],
-          correctIndex: 2,
-        },
-        {
-          question: "The poem ___ by the child.",
-          options: ["recites", "is recited", "is reciting", "recited"],
           correctIndex: 1,
         },
         {
-          question: "The dishes ___ after dinner.",
-          options: ["wash", "washed", "are washed", "are washing"],
-          correctIndex: 2,
-        },
-        {
-          question: "The floor ___ every day.",
-          options: ["is cleaned", "clean", "cleans", "cleaned"],
+          question: "Why might passive voice be more polite?",
+          options: [
+            "It avoids blaming someone directly.",
+            "It makes the sentence longer.",
+            "It always sounds formal.",
+            "It removes the verb.",
+          ],
           correctIndex: 0,
         },
         {
-          question: "The bill ___ by the customer.",
-          options: ["pays", "is paying", "paid", "is paid"],
-          correctIndex: 3,
-        },
-        {
-          question: "The thief ___ in the alley.",
-          options: ["caught", "is caught", "was caught", "catches"],
-          correctIndex: 2,
-        },
-        {
-          question: "He ___ the match yesterday.",
-          options: ["wins", "is won", "won", "was won"],
-          correctIndex: 2,
-        },
-        {
-          question: "The classroom ___ by the students.",
-          options: ["decorates", "was decorated", "decorated", "is decorating"],
+          question: "What is the correct structure for passive voice?",
+          options: [
+            "Subject + past participle + to be",
+            "Subject + to be + past participle",
+            "Subject + verb + object",
+            "Subject + infinitive + object",
+          ],
           correctIndex: 1,
         },
         {
-          question: "The questions ___ easily.",
-          options: ["answered", "are answered", "are answering", "answer"],
+          question:
+            "In the passive sentence 'A letter was written by Ahmed,' what is the subject?",
+          options: ["Ahmed", "was written", "A letter", "by"],
+          correctIndex: 2,
+        },
+        {
+          question:
+            "How is the active sentence 'Ahmed writes a letter' transformed into passive?",
+          options: [
+            "A letter wrote by Ahmed.",
+            "A letter is written by Ahmed.",
+            "A letter was written by Ahmed.",
+            "A letter has written by Ahmed.",
+          ],
           correctIndex: 1,
         },
         {
-          question: "The toys ___ by the children.",
-          options: ["are playing", "played", "are played", "were playing"],
+          question:
+            "Which tense is used in the passive sentence 'A letter has been written by Ahmed'?",
+          options: [
+            "Present Simple",
+            "Past Simple",
+            "Present Perfect",
+            "Future I",
+          ],
           correctIndex: 2,
         },
         {
-          question: "The mail ___ every morning.",
-          options: ["delivers", "is delivered", "deliver", "delivered"],
+          question: "What is the passive form of 'Ahmed will write a letter'?",
+          options: [
+            "A letter will be written by Ahmed.",
+            "A letter is written by Ahmed.",
+            "A letter was written by Ahmed.",
+            "A letter has been written by Ahmed.",
+          ],
+          correctIndex: 0,
+        },
+        {
+          question:
+            'What is the passive form of the sentence: "They are building a new bridge"?',
+          options: [
+            "A new bridge is built by them.",
+            "A new bridge is being built by them.",
+            "A new bridge was built by them.",
+            "A new bridge has been built by them.",
+          ],
           correctIndex: 1,
         },
         {
-          question: "He ___ the trophy last year.",
-          options: ["is awarded", "was awarded", "awarded", "has awarded"],
+          question: "What is the passive form of 'Ahmed is writing a letter'?",
+          options: [
+            "A letter is written by Ahmed.",
+            "A letter is being written by Ahmed.",
+            "A letter was written by Ahmed.",
+            "A letter has been written by Ahmed.",
+          ],
           correctIndex: 1,
         },
         {
-          question: "A picture ___ on the wall.",
-          options: ["hangs", "is hanged", "is hung", "hung"],
-          correctIndex: 2,
-        },
-        {
-          question: "A loud noise ___ outside.",
-          options: ["is hearing", "heard", "hears", "is heard"],
-          correctIndex: 3,
-        },
-        {
-          question: "The milk ___ by the cat.",
-          options: ["drank", "is drank", "is drunk", "is drinking"],
-          correctIndex: 2,
-        },
-        {
-          question: "My homework ___ by my brother.",
-          options: ["was done", "is doing", "did", "doing"],
-          correctIndex: 0,
-        },
-        {
-          question: "They ___ the movie last night.",
-          options: ["watched", "are watched", "are watching", "were watched"],
-          correctIndex: 0,
-        },
-        {
-          question: "The room ___ now.",
-          options: ["is being cleaned", "is cleaned", "cleaned", "cleans"],
-          correctIndex: 0,
-        },
-        {
-          question: "She ___ a gift by her friend.",
-          options: ["gives", "is given", "given", "was given"],
-          correctIndex: 3,
-        },
-        {
-          question: "The students ___ the test carefully.",
-          options: ["writes", "wrote", "were written", "write"],
+          question: "Which sentence is in Past Progressive passive?",
+          options: [
+            "A letter was written by Ahmed.",
+            "A letter was being written by Ahmed.",
+            "A letter had been written by Ahmed.",
+            "A letter is being written by Ahmed.",
+          ],
           correctIndex: 1,
         },
         {
-          question: "A letter ___ to him every week.",
-          options: ["writes", "written", "is written", "is writing"],
+          question: "What is the passive form of 'Ahmed had written a letter'?",
+          options: [
+            "A letter had written by Ahmed.",
+            "A letter had been written by Ahmed.",
+            "A letter was written by Ahmed.",
+            "A letter has been written by Ahmed.",
+          ],
+          correctIndex: 1,
+        },
+        {
+          question: "Which sentence is in Future II passive?",
+          options: [
+            "A letter will be written by Ahmed.",
+            "A letter will have been written by Ahmed.",
+            "A letter is written by Ahmed.",
+            "A letter was written by Ahmed.",
+          ],
+          correctIndex: 1,
+        },
+        {
+          question: "What is the passive form of 'Ahmed would write a letter'?",
+          options: [
+            "A letter would write by Ahmed.",
+            "A letter would be written by Ahmed.",
+            "A letter would been written by Ahmed.",
+            "A letter would have been written by Ahmed.",
+          ],
+          correctIndex: 1,
+        },
+        {
+          question:
+            "What is the passive form of 'Ahmed would have written a letter'?",
+          options: [
+            "A letter would have written by Ahmed.",
+            "A letter would be written by Ahmed.",
+            "A letter would have been written by Ahmed.",
+            "A letter had been written by Ahmed.",
+          ],
           correctIndex: 2,
         },
         {
-          question: "The thief ___ by the police.",
-          options: ["caught", "was catching", "was caught", "is catching"],
+          question:
+            "In the active sentence 'Hoda wrote a letter to me,' what are the two objects?",
+          options: [
+            "Hoda and letter",
+            "Letter and me",
+            "Wrote and letter",
+            "Hoda and me",
+          ],
+          correctIndex: 1,
+        },
+        {
+          question:
+            "Which is a correct passive transformation of 'Hoda wrote a letter to me'?",
+          options: [
+            "A letter was written to me by Hoda.",
+            "I was written a letter by Hoda.",
+            "Both a and b",
+            "Neither a nor b",
+          ],
           correctIndex: 2,
         },
         {
-          question: "The guests ___ warmly.",
-          options: ["are welcomed", "welcomed", "welcome", "are welcoming"],
+          question:
+            "What determines which object becomes the subject in a passive sentence with two objects?",
+          options: [
+            "The verb tense",
+            "The focus of the sentence",
+            "The length of the object",
+            "The speaker’s preference",
+          ],
+          correctIndex: 1,
+        },
+        {
+          question: "Which sentence is NOT in passive voice?",
+          options: [
+            "The book was read by the student.",
+            "The student read the book.",
+            "The book has been read by the student.",
+            "The book is being read by the student.",
+          ],
+          correctIndex: 1,
+        },
+        {
+          question: "What is the main purpose of passive voice?",
+          options: [
+            "To confuse the reader",
+            "To emphasize the doer of the action",
+            "To focus on the action or the receiver of the action",
+            "To shorten sentences",
+          ],
+          correctIndex: 2,
+        },
+        {
+          question:
+            "Passive voice is used when the doer of the action is unknown or unimportant.",
+          options: ["True", "False"],
           correctIndex: 0,
         },
         {
-          question: "A cake ___ for her birthday.",
-          options: ["is baking", "baked", "is baked", "was baked"],
-          correctIndex: 3,
+          question: "The sentence 'The window was broken' is in active voice.",
+          options: ["True", "False"],
+          correctIndex: 1,
         },
         {
-          question: "The homework ___ by me.",
-          options: ["is being done", "is doing", "does", "do"],
+          question:
+            "Passive voice always includes the doer of the action (e.g., 'by Ahmed').",
+          options: ["True", "False"],
+          correctIndex: 1,
+        },
+        {
+          question:
+            "The structure of passive voice is: Subject + to be + past participle.",
+          options: ["True", "False"],
           correctIndex: 0,
         },
         {
-          question: "The TV ___ by the children.",
-          options: ["is watching", "is watched", "watches", "watched"],
+          question:
+            "'A letter is written by Ahmed' is in Present Simple passive.",
+          options: ["True", "False"],
+          correctIndex: 0,
+        },
+        {
+          question:
+            "The passive form of 'Ahmed will write a letter' is 'A letter will write by Ahmed.'",
+          options: ["True", "False"],
+          correctIndex: 1,
+        },
+        {
+          question: "Passive voice can be used to make statements more polite.",
+          options: ["True", "False"],
+          correctIndex: 0,
+        },
+        {
+          question:
+            "In passive sentences with two objects, only one object can become the subject.",
+          options: ["True", "False"],
+          correctIndex: 0,
+        },
+        {
+          question:
+            "'A letter had been written by Ahmed' is in Past Perfect passive.",
+          options: ["True", "False"],
+          correctIndex: 0,
+        },
+        {
+          question:
+            "The sentence 'I was given a gift by my friend' is grammatically incorrect.",
+          options: ["True", "False"],
           correctIndex: 1,
         },
       ];
